@@ -1,0 +1,48 @@
+@using mkproject.Models
+@model SignInVm
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewBag.Title = "Login Page";
+    Layout = "_Layout";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h1 class="text-center mb-4">Welcome to Chat.io!</h1>
+                    <h2 class="text-center mb-4">Log in:</h2>
+
+
+                    <form asp-action="SignIn" method="post">
+                        <div class="form-group">
+                            <label for="UserName">Username</label>
+                            <input id="UserName" class="form-control" asp-for="UserName" placeholder="Enter your username">
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ChatRoomName">Chat Room Name</label>
+                            <input id="ChatRoomName" class="form-control" asp-for="ChatRoomName" placeholder="Enter chat room name">
+                            <span asp-validation-for="ChatRoomName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mt-3"> <!-- Added margin top -->
+                            <button type="submit" class="btn btn-primary btn-block">Login</button> <!-- Changed to btn-primary for blue color -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .btn-primary {
+        background-color: #007bff; /* Blue color from Bootstrap */
+        border-color: #007bff;
+    }
+</style>
+

@@ -1,0 +1,45 @@
+@using mkproject
+@model mkproject.Models.IndexVm
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Home Page";
+    var userName = Model.UserName;
+    var chatRoomName = Model.ChatRoomName;
+    Layout = "_Layout";
+}
+
+<input hidden id="user" value="@userName"/>
+<input hidden id="chatroom" value="@chatRoomName" />
+
+<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="display-4">Welcome, @userName!</h1>
+        <h3>Chat Room: @chatRoomName</h3>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-8 offset-md-2">
+            <div class="input-group">
+                <input type="text" class="form-control rounded-pill" id="userMessage" placeholder="Type your message...">
+                <div class="input-group-append">
+                    <button id="btnSend" class="btn btn-primary rounded-pill">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-8 offset-md-2">
+            <ul class="list-group shadow-sm" id="userMessages">
+                <!-- Messages will be dynamically added here -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="js/mkproject.js"></script>
+}
